@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\RoomRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -38,6 +40,22 @@ class Room
     #[ORM\ManyToOne(inversedBy: 'rooms')]
     #[ORM\JoinColumn(nullable: false)]
     private ?User $host = null;
+
+    #[ORM\OneToMany(mappedBy: 'room', targetEntity: Review::class, orphanRemoval: true)]
+    private Collection $reviews;
+
+    #[ORM\OneToMany(mappedBy: 'room', targetEntity: Booking::class, orphanRemoval: true)]
+    private Collection $bookings;
+
+    #[ORM\ManyToMany(targetEntity: Equipment::class, mappedBy: 'rooms')]
+    private Collection $equipments;
+
+    public function __construct()
+    {
+        $this->reviews = new ArrayCollection();
+        $this->bookings = new ArrayCollection();
+        $this->equipments = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -136,6 +154,93 @@ class Room
     public function setHost(?User $host): static
     {
         $this->host = $host;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Review>
+     */
+    public function getReviews(): Collection
+    {
+        return $this->reviews;
+    }
+
+    public function addReview(Review $review): static
+    {
+        if (!$this->reviews->contains($review)) {
+            $this->reviews->add($review);
+            $review->setRoom($this);
+        }
+
+        return $this;
+    }
+
+    public function removeReview(Review $review): static
+    {
+        if ($this->reviews->removeElement($review)) {
+            // set the owning side to null (unless already changed)
+            if ($review->getRoom() === $this) {
+                $review->setRoom(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Booking>
+     */
+    public function getBookings(): Collection
+    {
+        return $this->bookings;
+    }
+
+    public function addBooking(Booking $booking): static
+    {
+        if (!$this->bookings->contains($booking)) {
+            $this->bookings->add($booking);
+            $booking->setRoom($this);
+        }
+
+        return $this;
+    }
+
+    public function removeBooking(Booking $booking): static
+    {
+        if ($this->bookings->removeElement($booking)) {
+            // set the owning side to null (unless already changed)
+            if ($booking->getRoom() === $this) {
+                $booking->setRoom(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Equipment>
+     */
+    public function getEquipments(): Collection
+    {
+        return $this->equipments;
+    }
+
+    public function addEquipment(Equipment $equipment): static
+    {
+        if (!$this->equipments->contains($equipment)) {
+            $this->equipments->add($equipment);
+            $equipment->addRoom($this);
+        }
+
+        return $this;
+    }
+
+    public function removeEquipment(Equipment $equipment): static
+    {
+        if ($this->equipments->removeElement($equipment)) {
+            $equipment->removeRoom($this);
+        }
 
         return $this;
     }
