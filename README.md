@@ -39,3 +39,5 @@ This entity represents the equipments for a room.
 | -------- | ---------- | ----------- | ------------ |
 | name     | string     | 50 NOT NULL |              |
 | rooms    | ManyToMany |             | Room         |
+
+symfony console messenger:consume async -vv
