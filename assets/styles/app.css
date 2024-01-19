@@ -72,7 +72,16 @@ body {
 }
 
 /* Footer */
-.text {
-    font-family: 'Poppins', sans-serif;
-    font-weight: 300;
+footer {
+    position: fixed;
+    bottom: 1rem;
+}
+
+/* Room Card */
+.img-overlay{
+    background-color: rgba(25, 25, 25, .4);
+}
+
+.card-host-info img {
+    width: 32px;
 }
