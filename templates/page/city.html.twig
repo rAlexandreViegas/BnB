@@ -1,12 +1,12 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{% endblock %}
+{% block title %}
+	{{ title }}
+{% endblock %}
 
 {% block body %}
     <div class="d-flex flex-column justify-content-center vh-100 text-center {{ background }}">
-        <p class="title text-white text-uppercase fw-bolder">
-            {{ title }}
-        </p>
+        <p class="title text-white text-uppercase fw-bolder">{{ title }}</p>
         <p class="subtitle text-white text-uppercase fw-bolder {{ background == 'kyoto' or background == 'hongkong' ? 'subtitle-reverse' : title }}">
             {{ background == 'kyoto' or background == 'hongkong' ? subtitle : title }}
         </p>
