@@ -32,7 +32,7 @@ class Review
 
     #[ORM\ManyToOne(inversedBy: 'reviews')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?Room $rooms = null;
+    private ?Room $room = null;
 
 
     public function getId(): ?int
@@ -90,12 +90,12 @@ class Review
 
     public function getRooms(): ?Room
     {
-        return $this->rooms;
+        return $this->room;
     }
 
     public function setRooms(?Room $room): static
     {
-        $this->rooms = $room;
+        $this->room = $room;
 
         return $this;
     }
