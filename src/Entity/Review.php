@@ -88,12 +88,12 @@ class Review
         return $this;
     }
 
-    public function getRooms(): ?Room
+    public function getRoom(): ?Room
     {
         return $this->room;
     }
 
-    public function setRooms(?Room $room): static
+    public function setRoom(?Room $room): static
     {
         $this->room = $room;
 
