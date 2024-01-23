@@ -106,7 +106,7 @@ class AppFixtures extends Fixture
                     ->setTitle($faker->word(3, true))
                     ->setComment($faker->text(255))
                     ->setTraveler($user)
-                    ->setRooms($room)
+                    ->setRoom($room)
                     ->setRating($faker->numberBetween(1, 5))
                     ->setCreatedAt($reviewDate);
 
