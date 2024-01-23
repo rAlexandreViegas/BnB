@@ -55,6 +55,12 @@ class PageController extends AbstractController
         ]);
     }
 
+    #[Route('/account', name: 'account', methods: ['GET', 'POST'])]
+    public function account(): Response
+    {
+        return $this->render('page/account.html.twig', []);
+    }
+
     // Test route for designing the confirmation email
     #[Route('/email', name: 'email', methods: ['GET'])]
     public function email(): Response
