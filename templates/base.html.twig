@@ -29,7 +29,7 @@
 	{% set includedRoutes = ['paris', 'lasvegas', 'kyoto', 'sydney', 'hongkong'] %}
 
     {% if app.request.attributes.get('_route') in includedRoutes %}
-        {% set headerClasses = 'position-fixed start-0 end-0 d-flex justify-content-between align-items-center w-75 m-auto p-5 bg-transparent' %}
+        {% set headerClasses = 'position-fixed start-0 end-0 d-flex justify-content-between align-items-center w-75 m-auto py-5 bg-transparent' %}
         {% set footerClasses = 'blockquote d-flex justify-content-center align-items-center gap-2 w-100 py-3 bg-transparent' %}
     {% else %}
         {% set headerClasses = 'd-flex justify-content-between align-items-center w-100 m-auto p-2 bg-dark' %}
