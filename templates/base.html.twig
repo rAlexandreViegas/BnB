@@ -40,6 +40,10 @@
             </a>
             <div class="d-flex align-items-center gap-3">
                 {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <a href="{{ path('admin') }}" class="text-white text-decoration-none">Dashboard</a>
+                        <span class="text-white">|</span>
+                    {% endif %}
                     <a href="{{ path('account') }}" class="text-white text-decoration-none">My account</a>
                     <a href="{{ path('app_logout') }}" class="text-white text-decoration-none">Sign out</a>
                 {% else %}
