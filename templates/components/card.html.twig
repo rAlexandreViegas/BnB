@@ -19,11 +19,11 @@
             </form>
             {# Host info : img + firstname #}
             <a href="#" class="card-host-info d-flex gap-2 align-items-center text-decoration-none">
-                <img src={{ item.host.image }} alt="{{ item.host.firstname }} {{item.host.lastname }}" class="rounded-pill">
+                <img src="/uploads/users/{{ item.host.image }}" alt="{{ item.host.firstname }} {{item.host.lastname }}" class="rounded-pill">
                 <p class="text-white m-0">{{ item.host.firstname }}</p>
             </a>
         </div>
-        <img src="{{ item.cover }}" class="img-fluid rounded-4" alt="{{ item.title }}">
+        <img src="/uploads/rooms/{{ item.cover }}" class="img-fluid rounded-4" alt="{{ item.title }}">
     </div>
     {# Host more infos #}
     <div>
