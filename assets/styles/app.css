@@ -70,7 +70,6 @@ body {
     -webkit-text-stroke-color: #FFF;
     transform: rotate(-180deg);
 }
-
 .subtitle-reverse {
     transform: inherit;
 }
