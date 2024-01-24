@@ -42,11 +42,11 @@
             </a>
             <div class="d-flex align-items-center gap-3">
                 {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-                    <a href="{{ path('account') }}" class="text-white text-decoration-none">My account</a>
-                    <a href="{{ path('app_logout') }}" class="text-white text-decoration-none">Sign out</a>
+                    <a href="{{ path('account') }}" class="blockquote text-white text-decoration-none">My account</a>
+                    <a href="{{ path('app_logout') }}" class="blockquote text-white text-decoration-none">Sign out</a>
                 {% else %}
-                    <a href="{{ path('app_login') }}" class="text-white text-decoration-none">Sign in</a>
-                    <a href="{{ path('app_register') }}" class="btn btn-light rounded-pill">Sign up</a>
+                    <a href="{{ path('app_login') }}" class="blockquote text-white text-decoration-none">Sign in</a>
+                    <a href="{{ path('app_register') }}" class="blockquote btn btn-light rounded-pill">Sign up</a>
                 {% endif %}
             </div>
         </header>
