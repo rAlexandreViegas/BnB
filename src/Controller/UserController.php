@@ -19,7 +19,7 @@ class UserController extends AbstractController
         EntityManagerInterface $em
     ): Response {
         $form = $this->createForm(ProfileType::class);
-        $form->handleRequest($this->$request);
+        $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $profileService->updateProfile($form, $this->getUser(), $em);
