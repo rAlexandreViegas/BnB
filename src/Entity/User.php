@@ -9,6 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[ORM\Table(name: '`user`')]
@@ -21,6 +22,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private ?int $id = null;
 
     #[ORM\Column(length: 180, unique: true)]
+    #[Assert\Email(
+        message: 'The email "{{ value }}" is not a valid email. Try again!',
+    )]
     private ?string $email = null;
 
     #[ORM\Column]
@@ -30,27 +34,72 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      * @var string The hashed password
      */
     #[ORM\Column]
+    #[Assert\Regex(
+        pattern: '/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/',
+        message: 'Your password must contain : at least 1 uppercase letter, 1 lowercase letter, 1 number, at least 1 special character, at least 8 characters'
+    )]
     private ?string $password = null;
 
     #[ORM\Column(length: 50, nullable: true)]
+    #[Assert\Length(
+        min: 2,
+        max: 50,
+        minMessage: 'Your firstname must be at least {{ limit }} characters long',
+        maxMessage: 'Your firstname cannot be longer than {{ limit }} characters',
+    )]
     private ?string $firstname = null;
 
     #[ORM\Column(length: 50, nullable: true)]
+    #[Assert\Length(
+        min: 2,
+        max: 50,
+        minMessage: 'Your lastname must be at least {{ limit }} characters long',
+        maxMessage: 'Your lastname cannot be longer than {{ limit }} characters',
+    )]
     private ?string $lastname = null;
 
     #[ORM\Column(nullable: true)]
+    #[Assert\Range(
+        min: 1940,
+        max: 2007,
+        notInRangeMessage: 'Your birthyear must be between {{ min }} and {{ max }}',
+    )]
     private ?int $birthyear = null;
 
     #[ORM\Column(length: 255, nullable: true)]
+    #[Assert\Length(
+        min: 2,
+        max: 255,
+        minMessage: 'Your address must be at least {{ limit }} characters long',
+        maxMessage: 'Your address cannot be longer than {{ limit }} characters',
+    )]
     private ?string $address = null;
 
     #[ORM\Column(length: 50, nullable: true)]
+    #[Assert\Length(
+        min: 2,
+        max: 50,
+        minMessage: 'Your city must be at least {{ limit }} characters long',
+        maxMessage: 'Your city cannot be longer than {{ limit }} characters',
+    )]
     private ?string $city = null;
 
     #[ORM\Column(length: 50, nullable: true)]
+    #[Assert\Length(
+        min: 2,
+        max: 50,
+        minMessage: 'Your country must be at least {{ limit }} characters long',
+        maxMessage: 'Your country cannot be longer than {{ limit }} characters',
+    )]
     private ?string $country = null;
 
     #[ORM\Column(length: 50, nullable: true)]
+    #[Assert\Length(
+        min: 2,
+        max: 50,
+        minMessage: 'Your job must be at least {{ limit }} characters long',
+        maxMessage: 'Your job cannot be longer than {{ limit }} characters',
+    )]
     private ?string $job = null;
 
     #[ORM\Column(length: 255, nullable: true)]
