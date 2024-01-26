@@ -36,7 +36,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     #[Assert\Regex(
         pattern: '/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/',
-        message: 'Your password must contain : at least 1 uppercase letter, 1 lowercase letter, 1 number, at least 1 special character, at least 8 characters'
+        message: 'Your password must contain at least : 
+            1 uppercase letter,
+            1 lowercase letter,
+            1 number,
+            1 special character,
+            8 characters'
     )]
     private ?string $password = null;
 
@@ -437,5 +442,10 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         }
 
         return $this;
+    }
+
+    public function __toString()
+    {
+        return $this->getFullname();
     }
 }
