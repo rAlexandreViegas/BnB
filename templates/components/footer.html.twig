@@ -1,0 +1,19 @@
+{% set includedRoutes = ['paris', 'lasvegas', 'kyoto', 'sydney', 'hongkong'] %}
+
+{% if app.request.attributes.get('_route') in includedRoutes %}
+    {% set footerClasses = 'blockquote d-flex justify-content-center align-items-center gap-2 w-100 py-3 bg-transparent' %}
+{% else %}
+    {% set footerClasses = 'd-none' %}
+{% endif %}
+
+<footer class="{{ footerClasses }}">
+    <a href="{{ path('paris')}}" class="text-white text-decoration-none">Paris</a>
+    <small class="text-white">•</small>
+    <a href="{{ path('lasvegas')}}" class="text-white text-decoration-none">Las Vegas</a>
+    <small class="text-white">•</small>
+    <a href="{{ path('kyoto')}}" class="text-white text-decoration-none">Kyoto</a>
+    <small class="text-white">•</small>
+    <a href="{{ path('sydney')}}" class="text-white text-decoration-none">Sydney</a>
+    <small class="text-white">•</small>
+    <a href="{{ path('hongkong')}}" class="text-white text-decoration-none">Hong Kong</a>
+</footer>

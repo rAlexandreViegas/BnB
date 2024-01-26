@@ -24,47 +24,11 @@
 			<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 		{% endblock %}
 	</head>
-	{% set includedRoutes = ['paris', 'lasvegas', 'kyoto', 'sydney', 'hongkong'] %}
-
-    {% if app.request.attributes.get('_route') in includedRoutes %}
-        {% set headerClasses = 'blockquote position-fixed start-0 end-0 d-flex justify-content-between align-items-baseline w-75 m-auto py-5 bg-transparent' %}
-        {% set footerClasses = 'blockquote d-flex justify-content-center align-items-center gap-2 w-100 py-3 bg-transparent' %}
-    {% else %}
-        {% set headerClasses = 'blockquote d-flex justify-content-between align-items-baseline w-100 m-auto px-5 py-2 bg-dark' %}
-        {% set footerClasses = 'd-none' %}
-    {% endif %}
     <body>
-        <header class="{{ headerClasses }}">
-            <a href="{{ path('paris') }}">
-                <img src="{{ asset('images/icon.svg') }}" alt="Logo BnB" width="100">
-            </a>
-            <div class="d-flex align-items-center gap-3">
-                {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-                    {% if is_granted('ROLE_ADMIN') %}
-                        <a href="{{ path('admin') }}" class="text-white text-decoration-none">Dashboard</a>
-                        <span class="text-white">|</span>
-                    {% endif %}
-                    <a href="{{ path('account') }}" class="text-white text-decoration-none">My account</a>
-                    <a href="{{ path('app_logout') }}" class="text-white text-decoration-none">Sign out</a>
-                {% else %}
-                    <a href="{{ path('app_login') }}" class="text-white text-decoration-none">Sign in</a>
-                    <a href="{{ path('app_register') }}" class="btn btn-light rounded-pill">Sign up</a>
-                {% endif %}
-            </div>
-        </header>
+        {% include 'components/header.html.twig' %}
         <main>
             {% block body %}{% endblock %}
         </main>
-        <footer class="{{ footerClasses }}">
-            <a href="{{ path('paris')}}" class="text-white text-decoration-none">Paris</a>
-            <small class="text-white">•</small>
-            <a href="{{ path('lasvegas')}}" class="text-white text-decoration-none">Las Vegas</a>
-            <small class="text-white">•</small>
-            <a href="{{ path('kyoto')}}" class="text-white text-decoration-none">Kyoto</a>
-            <small class="text-white">•</small>
-            <a href="{{ path('sydney')}}" class="text-white text-decoration-none">Sydney</a>
-            <small class="text-white">•</small>
-            <a href="{{ path('hongkong')}}" class="text-white text-decoration-none">Hong Kong</a>
-        </footer>
+        {% include 'components/footer.html.twig' %}
     </body>
 </html>
