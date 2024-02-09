@@ -1,43 +1,23 @@
-# BnB platform
+# Bnb
 
-## Entities
+![Static Badge](https://img.shields.io/badge/SYMFONY-000000?style=for-the-badge&logo=symfony&logoColor=white) ![Static Badge](https://img.shields.io/badge/POSTGRESQL-4169E1?style=for-the-badge&logo=postgresql&logoColor=white)
 
-### Review
+**_⚠️ This project is still in progress ⚠️_**
 
-This entity represents a review made by a traveler to a booking for a room.
+Bnb is a clone of Airbnb made with Symfony, utilizing a PostgreSQL database to store user data and property information.
 
-| Property   | Type      | Description          | Relationship |
-| ---------- | --------- | -------------------- | ------------ |
-| title      | string    | 50 NOT NULL          |              |
-| comment    | text      | NOT NULL             |              |
-| rating     | integer   | NOT NULL             |              |
-| created_at | datetime  | NOT NULL             |              |
-| traveler   | ManyToOne | NOT NULL, OrphanTrue | User         |
-| rooms      | ManyToOne | NOT NULL, OrphanTrue | Room         |
-| booking    | OneToOne  | NOT NULL, OrphanTrue | Booking      |
+Features include:
 
-### Booking
+-   User account creation and login functionality.
+-   Property listings with detailed information and images.
+-   Booking system allowing users to reserve properties.
+-   User profile management with the ability to view booking history.
+-   Favoriting feature enabling users to save their preferred properties for quick access.
 
-This entity represents a booking made by a traveler to a room.
+<br/>
 
-| Property   | Type      | Description          | Relationship |
-| ---------- | --------- | -------------------- | ------------ |
-| number     | string    | 50 NOT NULL          |              |
-| check_in   | datetime  | NOT NULL             |              |
-| check_out  | datetime  | NOT NULL             |              |
-| occupants  | integer   | NOT NULL             |              |
-| created_at | datetime  | NOT NULL             |              |
-| traveler   | ManyToOne | NOT NULL, OrphanTrue | User         |
-| room       | ManyToOne | OrphanTrue           | Room         |
-| review     | OneToOne  | OrphanTrue           | Review       |
+<p align="center" >
+	<img src="./assets/screenshot_readme.png" width="700">
+</p>
 
-### Equipment
-
-This entity represents the equipments for a room.
-
-| Property | Type       | Description | Relationship |
-| -------- | ---------- | ----------- | ------------ |
-| name     | string     | 50 NOT NULL |              |
-| rooms    | ManyToMany |             | Room         |
-
-symfony console messenger:consume async -vv
+<br/>
