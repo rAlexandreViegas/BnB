@@ -6,6 +6,14 @@
 
 Bnb is a clone of Airbnb made with Symfony, utilizing a PostgreSQL database to store user data and property information.
 
+<br/>
+
+<p align="center" >
+	<img src="./assets/screenshot_readme.png" width="700">
+</p>
+
+<br/>
+
 Features include:
 
 -   User account creation and login functionality.
@@ -13,11 +21,5 @@ Features include:
 -   Booking system allowing users to reserve properties.
 -   User profile management with the ability to view booking history.
 -   Favoriting feature enabling users to save their preferred properties for quick access.
-
-<br/>
-
-<p align="center" >
-	<img src="./assets/screenshot_readme.png" width="700">
-</p>
 
 <br/>
